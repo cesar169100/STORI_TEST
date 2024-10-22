@@ -47,3 +47,24 @@ def mean_balance(column: str):
 
 # Question 1.3: Mean, median balance table
 mean_balance('balance')
+
+## Data structure
+# Check the types and general statistics
+df.dtypes
+df.describe()
+# Check percentaje of nulls
+nan_perc = df.isnull().mean()
+# Balance of the target
+df[df['fraud']==1].shape[0]/df.shape[0]
+# Correlation diagram
+df_numeric = df.select_dtypes(include=['float64', 'int64'])
+correlation = df_numeric.corr()
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation, annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title('Correlations')
+plt.savefig('figures/correlation_map.png')
+plt.close()
+
+
+df[df['activated_date'].isnull()]
+df['cash_advance'].head(10)
