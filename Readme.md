@@ -21,4 +21,13 @@ For this excersice i kept only the five necessary fields, we turn date fields to
 
 # Question 3
 ## Question 3.1
+To build a model, first the date features were drop and instead a new calculated feature was used. This new one is the days between last payment and activated date, in some cases days < 0, and i assume that this means that it is an advance payment. Cust_id feature were drop because its one row per client. Other dropped features were oneoff_purchases and purchases_installments_frequency because they were very correlated with purchases and purchases_frequency. Finally there were some features with missing data so i applied a simple imputation method with the median because its more robust to outliers than mean. Finally a standar scaling was applied because in regression problems it is important to have features of similar scale.
+Once the above was done i decided to apply a logistic regression because this is a binary classification problem and i wanted an easy to interpret model. The hiperparameter optimization was done with optuna which is based on bayesian optimization, we focus on the hiperparamteres based on regularization. Metrics like accuracy, precision, recall, f1, auc and specificity were calculated but focusing the optimization in f1 because i wanted to control both type 1 and type2 errors; i think that it was also reasonable to optimize with respect to recall because I consider the type 2 error to be more serious. The f1 is 0.30, precision is 0.18 and recall 0.82, as we can see it has failures to detect type 1 error but does not do badly in detecting type 2 error.
 ## Question 3.2
+Here we just need to see the absolute value of the coefficients. The purchases, cash_advance_trx, balance coeff were some of the most importants, which makes sense because the riskiest clients are those who buy the most or who have cash from their line of credit, which implies a higher interest rate.
+
+# More comments
+- A virtual enviroment was used during this excersise.
+- For this excersise, the folder figures contains two of the plots made, the codes are in the folder src and there is one python file per question. The requirements.txt contains the libaries used and their versions to replicate this in a docker enviroment, for example.
+- About the model, we could try a more complex model with techiniques like boosting but with regressors functions instead of trees. This kind of models perform feature bagging to avoid overfitting.
+- But more important than the above, is neccessary to try some syntetic data creation to get a more balanced set. Techiniques that do this is SMOTE techinique.

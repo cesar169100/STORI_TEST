@@ -64,7 +64,3 @@ sns.heatmap(correlation, annot=True, cmap='coolwarm', linewidths=0.5)
 plt.title('Correlations')
 plt.savefig('figures/correlation_map.png')
 plt.close()
-
-
-df[df['activated_date'].isnull()]
-df['cash_advance'].head(10)
