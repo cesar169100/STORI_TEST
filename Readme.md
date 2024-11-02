@@ -31,3 +31,6 @@ Here we just need to see the absolute value of the coefficients. The purchases, 
 - For this excersise, the folder figures contains two of the plots made, the codes are in the folder src and there is one python file per question. The requirements.txt contains the libaries used and their versions to replicate this in a docker enviroment, for example.
 - About the model, we could try a more complex model with techiniques like boosting but with regressors functions instead of trees. This kind of models perform feature bagging to avoid overfitting.
 - But more important than the above, is neccessary to try some syntetic data creation to get a more balanced set. Techiniques that do this is SMOTE techinique.
+
+# Seccion extra: Learning Curve
+El codigo es el notebook prueba.ipynb. El análisis de la curva de aprendizaje es más útil antes de realizar la optimización de los hiperparámetros del modelo. La razón es que las curvas de aprendizaje muestran cómo se comporta el modelo base con diferentes cantidades de datos, revelando patrones de sobreajuste (overfitting) o subajuste (underfitting) que son inherentes al modelo y no tanto a sus parámetros. Esto ayuda a decidir si el modelo en su forma base es adecuado para los datos, o si podría beneficiarse de ajustes adicionales, como obtener más datos, ajustar la complejidad del modelo, o cambiar de modelo.
